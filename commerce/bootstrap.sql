@@ -40,3 +40,9 @@ INSERT OR IGNORE INTO products(id,data) VALUES ('straight-bob','{"id":"straight-
 INSERT OR IGNORE INTO inventory(product_id,option_key) VALUES ('straight-bob','null:null');
 INSERT OR IGNORE INTO products(id,data) VALUES ('loose-curls','{"id":"loose-curls","name":"Black Loose Curls","type":"wig","texture":"curly","image":"loose-curls","colour":"Natural black","price":null,"lengths":[0],"description":"Soft black curls shown on a foam mannequin with the Neto Hairs packaging.","variants":[{"inches":null,"grams":null,"price":null}]}');
 INSERT OR IGNORE INTO inventory(product_id,option_key) VALUES ('loose-curls','null:null');
+
+-- Additive homepage/media tables
+
+CREATE TABLE IF NOT EXISTS media_assets(id TEXT PRIMARY KEY,kind TEXT NOT NULL,url TEXT NOT NULL,poster TEXT NOT NULL DEFAULT '',title TEXT NOT NULL,alt TEXT NOT NULL DEFAULT '',origin TEXT NOT NULL,public_id TEXT,provider_version TEXT,bytes INTEGER NOT NULL DEFAULT 0,archived INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS media_uploads(id TEXT PRIMARY KEY,kind TEXT NOT NULL,public_id TEXT NOT NULL,email TEXT NOT NULL,expires_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS site_pages(id TEXT PRIMARY KEY,draft_json TEXT NOT NULL,published_json TEXT NOT NULL,version INTEGER NOT NULL DEFAULT 0,published_revision INTEGER NOT NULL DEFAULT 0,published_at TEXT);

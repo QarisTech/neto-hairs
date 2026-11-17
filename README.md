@@ -93,3 +93,26 @@ Optional: use a transactional-email provider account with a verified sending dom
 The runtime source ZIP contains all 11 edited photographs and their placement manifest. The unedited originals remain in your uploaded Telegram Desktop.7z and the retained project source; they are not duplicated in the runtime ZIP.
 
 No paid service, Netlify site connection, external database or payment credential has been provisioned automatically. This source package is ready for account configuration and staging validation; it is not a claim that the production commerce system is already running.
+
+## Connection diagnostics
+The backend accepts both LIBSQL_DATABASE_URL/LIBSQL_AUTH_TOKEN and Turso’s TURSO_DATABASE_URL/TURSO_AUTH_TOKEN names. Open /api/store/config: missing_runtime_settings means the function cannot read settings; database_connection_failed means settings exist but connection/authentication failed; schema_not_initialized means Turso is connected and bootstrap.sql still needs running; ready means connection and application tables work. Diagnostics show presence flags only, never credential values.
+
+Login settings fix: each request now builds its authentication service from current runtime settings, avoiding an old password hash retained by a warm function. Diagnostics version 3 adds a short SHA-256-derived fingerprint of the saved hash; compare it with the browser-only checker fingerprint, never share the password/hash itself. A matching fingerprint confirms both tools use the same saved hash.
+
+## Mobile dashboard, media library and homepage editor
+
+Update the complete source in your Git-connected Netlify repository and deploy. Existing database records stay intact; the function automatically adds the three media/homepage tables. No replacement bootstrap or new password is needed for this update.
+
+Sign in at `/manage.html`. The phone menu opens each dashboard section. Record tables become labelled cards on small screens; product forms and media controls support touch.
+
+- **Photos & videos:** all 11 supplied output product/detail photographs and the current hero are available immediately. Upload real photos or videos, enter descriptions, preview, and archive unused media. Archiving retains the Cloudinary source; files in use cannot be archived.
+- **Products:** choose up to 12 photos/videos, arrange them with Up/Down and save. The first becomes the cover; customers see the gallery alongside size, grams and price options in the product details dialog.
+- **Homepage:** edit hero media/text, carousel choices and order, feature, collection priorities, gallery, care text, closing, section order/visibility and supported fonts/colours. Save draft privately, preview with the owner session, then publish. This is a structured editor, not a freeform page builder. Simultaneous stale saves are rejected to protect newer changes.
+
+### Connect uploads once
+
+Create a Cloudinary account. In its dashboard, open API Keys and find Cloud name, API key and API secret. Add `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` to Netlify environment variables with **Functions** scope, then redeploy. Keep the API secret in Netlify only; no unsigned upload preset is needed. Existing library selection works before these settings are added.
+
+Uploads go directly from the phone to Cloudinary using short-lived signed requests, avoiding Netlify function upload size limits. The server verifies registered assets with Cloudinary. Limits: photos 10 MB; videos 100 MB and two minutes. Cloudinary storage/bandwidth and transformations use the account's allowance; review its current plan before launch. Videos play on request; optional hero autoplay is muted and respects reduced motion. Photos are delivered with automatic compression. An interrupted registration can be retried using “Finish saving uploaded file.”
+
+Verify on the deployed site: upload a real photo and a short video, assign them to a product, check the gallery on a phone, save a homepage draft (public site unchanged), preview, publish and reload the public site. Automated tests mock Cloudinary; a real account upload still needs this deployment check. Payments and shipping retain their existing settings.

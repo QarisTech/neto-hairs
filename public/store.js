@@ -26,15 +26,19 @@ try {
 } catch {}
 function imageClass(p){return 'catalog-'+p.image}
 function unitPrice(p,length,key=null){const v=p.variants.find(v=>key?optionKey(v)===key:(v.inches||0)===length);return v?.price??null}
+let homepagePriority=[];
+window.addEventListener('neto:homepage',e=>{homepagePriority=e.detail.collection.priorityProducts;renderProducts()});
+window.addEventListener('neto:open-product',e=>openProduct(e.detail));
 function currentProducts(){
  const list=products.filter(p=>(group==='all'||p.texture===group)&&(!texture||p.texture===texture)&&(!query||(p.name+' '+p.description+' '+p.texture+' '+p.type+' '+p.colour).toLowerCase().includes(query)));
  if(sort!=='featured')list.sort((a,b)=>{if(a.price===null)return b.price===null?0:1;if(b.price===null)return -1;return sort==='low'?a.price-b.price:b.price-a.price});
+ if(sort==='featured'&&homepagePriority.length)list.sort((a,b)=>(homepagePriority.indexOf(a.id)<0?999:homepagePriority.indexOf(a.id))-(homepagePriority.indexOf(b.id)<0?999:homepagePriority.indexOf(b.id)));
  return list;
 }
 const plus='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7v14"/></svg>';
 function renderProducts(){
  const list=currentProducts();
- $('#products').innerHTML=list.map(p=>`<article class="product-card"><button class="product-photo" data-product="${p.id}" aria-label="Choose options for ${escapeHTML(p.name)}"><span class="product-visual ${imageClass(p)}" role="img" aria-label="${escapeHTML(p.name)}"></span><span class="product-add">${plus}</span></button><p class="product-kind">Wig</p><div class="product-title"><h3><button data-product="${p.id}">${escapeHTML(p.name)}</button></h3><span class="product-price">${formatPrice(p.price)}</span></div><p class="product-detail">${escapeHTML(optionSummary(p))}</p></article>`).join('');
+ $('#products').innerHTML=list.map(p=>`<article class="product-card"><button class="product-photo" data-product="${p.id}" aria-label="Choose options for ${escapeHTML(p.name)}">${p.coverUrl?`<img class="product-visual cms-cover" src="${escapeHTML(p.coverUrl)}" alt="${escapeHTML(p.name)}" loading="lazy">`:`<span class="product-visual ${imageClass(p)}" role="img" aria-label="${escapeHTML(p.name)}"></span>`}<span class="product-add">${plus}</span></button><p class="product-kind">Wig</p><div class="product-title"><h3><button data-product="${p.id}">${escapeHTML(p.name)}</button></h3><span class="product-price">${formatPrice(p.price)}</span></div><p class="product-detail">${escapeHTML(optionSummary(p))}</p></article>`).join('');
  $('#result-count').textContent=list.length+' '+(list.length===1?'style':'styles');$('#no-results').hidden=list.length>0;
  document.querySelectorAll('[data-product]').forEach(button=>button.addEventListener('click',()=>openProduct(button.dataset.product)));
  animateNewCards();
@@ -54,6 +58,7 @@ function openProduct(id){
  selected=products.find(p=>p.id===id);if(!selected)return;selectedLength=selected.lengths[0];selectedOptionKey=optionKey(selected.variants[0]);
  const photo=$('#dialog-product-image');photo.className='dialog-product-image '+imageClass(selected);photo.setAttribute('aria-label',selected.name+' texture inspiration');
  $('.chosen-color strong').textContent=selected.colour;$('#product-dialog-title').textContent=selected.name;$('#dialog-description').textContent=selected.description;
+ window.dispatchEvent(new CustomEvent('neto:product-detail',{detail:selected}));
  renderLengths();$('#product-dialog').showModal();
 }
 function renderLengths(){
@@ -65,7 +70,7 @@ function toast(message){clearTimeout(toastTimeout);$('#toast').textContent=messa
 function persistBag(){try{localStorage.setItem('neto-hairs-bag',JSON.stringify(bag));return true}catch{return false}}
 function renderBag(){
  $('#count').textContent=bag.length;$('#bag-open').setAttribute('aria-label','Open shopping bag, '+bag.length+' '+(bag.length===1?'item':'items'));
- $('#bag-items').innerHTML=bag.length?bag.map((item,index)=>{const p=products.find(p=>p.id===item.id);return `<div class="bag-row"><div class="bag-thumb ${imageClass(p)}" role="img" aria-label="${escapeHTML(p.name)}"></div><div><h3>${escapeHTML(p.name)}</h3><p>${item.length?item.length+' inches':'Length to be confirmed'}${optionFor(p,item)?.grams?' / '+optionFor(p,item).grams+' g':''} / ${escapeHTML(p.colour)}</p><p>${formatPrice(unitPrice(p,item.length,item.optionKey))}</p></div><button class="remove-item" data-remove="${index}" aria-label="Remove ${escapeHTML(p.name)} from bag">Remove</button></div>`}).join(''):'<p class="bag-empty">Your next favourite is waiting. Explore the collection and make it yours.</p>';
+ $('#bag-items').innerHTML=bag.length?bag.map((item,index)=>{const p=products.find(p=>p.id===item.id);return `<div class="bag-row"><div class="bag-thumb ${imageClass(p)}" role="img" aria-label="${escapeHTML(p.name)}">${p.coverUrl?`<img src="${escapeHTML(p.coverUrl)}" alt="">`:""}</div><div><h3>${escapeHTML(p.name)}</h3><p>${item.length?item.length+' inches':'Length to be confirmed'}${optionFor(p,item)?.grams?' / '+optionFor(p,item).grams+' g':''} / ${escapeHTML(p.colour)}</p><p>${formatPrice(unitPrice(p,item.length,item.optionKey))}</p></div><button class="remove-item" data-remove="${index}" aria-label="Remove ${escapeHTML(p.name)} from bag">Remove</button></div>`}).join(''):'<p class="bag-empty">Your next favourite is waiting. Explore the collection and make it yours.</p>';
  $('#total').textContent=bag.some(item=>unitPrice(products.find(p=>p.id===item.id),item.length,item.optionKey)===null)?'Confirm pricing':formatPrice(bag.reduce((total,item)=>total+unitPrice(products.find(p=>p.id===item.id),item.length,item.optionKey),0));
  document.querySelectorAll('[data-remove]').forEach(button=>button.addEventListener('click',()=>{const index=Number(button.dataset.remove);const name=products.find(p=>p.id===bag[index].id).name;bag.splice(index,1);persistBag();renderBag();toast(name+' removed from your bag');const next=document.querySelector(`[data-remove="${Math.min(index,bag.length-1)}"]`);(next||$('#continue')).focus()}));
 }
