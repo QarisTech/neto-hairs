@@ -1,0 +1,20 @@
+{
+  "name": "neto-hairs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-netlify.mjs",
+    "build:netlify": "node scripts/build-netlify.mjs",
+    "commerce:setup": "node scripts/setup-commerce.mjs",
+    "commerce:password": "node scripts/hash-owner-password.mjs",
+    "test:commerce": "node --test tests/commerce.test.mjs"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0",
+    "drizzle-orm": "^0.44.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.0",
+    "esbuild": "^0.28.2"
+  }
+}
