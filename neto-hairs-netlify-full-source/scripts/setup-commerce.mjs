@@ -1,3 +1,0 @@
-import fs from 'node:fs';import {createClient} from '@libsql/client';import {createCommerce} from '../commerce/core.mjs';
-if(!process.env.LIBSQL_DATABASE_URL||!process.env.LIBSQL_AUTH_TOKEN)throw new Error('Set LIBSQL_DATABASE_URL and LIBSQL_AUTH_TOKEN in this terminal first. Never commit credentials.');
-const db=createClient({url:process.env.LIBSQL_DATABASE_URL,authToken:process.env.LIBSQL_AUTH_TOKEN});await db.executeMultiple(fs.readFileSync('commerce/schema.sql','utf8'));await createCommerce({db,seed:JSON.parse(fs.readFileSync('commerce/seed.json'))}).init();db.close();console.log('Database initialized without deleting existing records. All new products are enquiry-only until confirmed.');
