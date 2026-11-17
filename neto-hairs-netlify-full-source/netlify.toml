@@ -1,0 +1,26 @@
+[build]
+  command = "npm run build:netlify"
+  publish = "netlify-dist"
+  functions = "netlify/functions"
+[build.environment]
+  NODE_VERSION = "22"
+[functions]
+  node_bundler = "esbuild"
+[[redirects]]
+  from = "/admin"
+  to = "/manage.html"
+  status = 302
+[[redirects]]
+  from = "/admin.html"
+  to = "/manage.html"
+  status = 302
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://res.cloudinary.com; media-src 'self' https://res.cloudinary.com; font-src 'self'; connect-src 'self' https://api.cloudinary.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"
+[[headers]]
+  for = "/manage.html"
+  [headers.values]
+    Cache-Control = "no-store"

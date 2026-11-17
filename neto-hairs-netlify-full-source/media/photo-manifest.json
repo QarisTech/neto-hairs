@@ -1,0 +1,90 @@
+[
+  {
+    "original": "media/originals/photo_2026-11-17_02-48-30.jpg",
+    "sha256": "405f85312cdaf756848b095af1b6d599f53444faf0d9a47f353f1bf818a19245",
+    "asset": "public/assets/catalogue/deepwave.webp",
+    "productId": "muse",
+    "placement": "catalogue",
+    "treatment": "AI-assisted crop and light retouch; original setting retained"
+  },
+  {
+    "original": "media/originals/photo_2026-11-17_02-48-40.jpg",
+    "sha256": "3d0ca181dd58d2e23eb9b4c77633f9e1fa5ec15e096440dc18dbf218ce2a7738",
+    "asset": "public/assets/catalogue/brown-deepwave.webp",
+    "productId": "brown-deepwave",
+    "placement": "catalogue",
+    "treatment": "AI-assisted crop and light retouch; original setting retained"
+  },
+  {
+    "original": "media/originals/photo_2026-11-17_02-48-48.jpg",
+    "sha256": "660c5a7262a7cc64b86435f87692fdfb7311522c84f5a77859fd045c871aa0a5",
+    "asset": "public/assets/catalogue/brown-curlybob.webp",
+    "productId": "brown-curlybob",
+    "placement": "catalogue",
+    "treatment": "AI-assisted crop and light retouch; original setting retained"
+  },
+  {
+    "original": "media/originals/photo_2026-11-17_02-48-59.jpg",
+    "sha256": "5975528a2cb7990498d97fa3d701609b06764da319c007a1afd1ade9b01dd26a",
+    "asset": "public/assets/catalogue/pixie-curls.webp",
+    "productId": "pixie-curls",
+    "placement": "catalogue",
+    "treatment": "AI-assisted crop and light retouch; original setting retained"
+  },
+  {
+    "original": "media/originals/photo_2026-11-17_02-49-13.jpg",
+    "sha256": "e57f18574166d69ec7723565251225af37f2f8c80458c79028ed809b747bca21",
+    "asset": "public/assets/catalogue/shop-curlybob.webp",
+    "productId": "shop-curlybob",
+    "placement": "catalogue",
+    "treatment": "AI-assisted crop and light retouch; original setting retained"
+  },
+  {
+    "original": "media/originals/photo_2026-11-17_02-49-18.jpg",
+    "sha256": "f51701ec405e841e8f024e7b160e04203265bcd48e6039d1510a41f46252d86b",
+    "asset": "public/assets/catalogue/black-waves.webp",
+    "productId": "black-waves",
+    "placement": "catalogue",
+    "treatment": "AI-assisted crop and light retouch; original setting retained"
+  },
+  {
+    "original": "media/originals/photo_2026-11-17_02-49-21.jpg",
+    "sha256": "98d38f6f4207fad3cab1d4676933f0ae2013e52ca2fe60491ab765b85d904ae3",
+    "asset": "public/assets/catalogue/sidecurl.webp",
+    "productId": "sidecurl",
+    "placement": "catalogue",
+    "treatment": "AI-assisted crop and light retouch; original setting retained"
+  },
+  {
+    "original": "media/originals/photo_2026-11-17_02-49-26.jpg",
+    "sha256": "fe38dd1ced1434b7d06a059e40a9120cc4c86c2f8fe1f3c5141d1d4382204111",
+    "asset": "public/assets/details/long-curls.webp",
+    "productId": null,
+    "placement": "detail gallery",
+    "treatment": "AI-assisted crop and light retouch; original setting retained"
+  },
+  {
+    "original": "media/originals/photo_2026-11-17_02-49-32.jpg",
+    "sha256": "ec227dc8b4003064607b876dcd4ae065761308aece5f307bdcea77444d67e5b6",
+    "asset": "public/assets/catalogue/straight-bob.webp",
+    "productId": "straight-bob",
+    "placement": "catalogue",
+    "treatment": "AI-assisted crop and light retouch; original setting retained"
+  },
+  {
+    "original": "media/originals/photo_2026-11-17_02-49-38.jpg",
+    "sha256": "7ea199b2f3f9b79db53c77b63c36fa25c80702ea37cb9ff88e6e0d19dd3ad7a7",
+    "asset": "public/assets/details/packaging.webp",
+    "productId": null,
+    "placement": "detail gallery",
+    "treatment": "AI-assisted crop and light retouch; original setting retained"
+  },
+  {
+    "original": "media/originals/photo_2026-11-17_02-49-43.jpg",
+    "sha256": "db4f5e052d6bc3f444302c907dfd2f7881b0d7555a834d460824c579592e203c",
+    "asset": "public/assets/catalogue/loose-curls.webp",
+    "productId": "loose-curls",
+    "placement": "catalogue",
+    "treatment": "AI-assisted crop and light retouch; original setting retained"
+  }
+]
