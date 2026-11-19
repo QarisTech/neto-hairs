@@ -2,24 +2,30 @@
 (() => {
  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
  const fine=()=>matchMedia('(hover: hover) and (pointer: fine)').matches;
- const grid=document.querySelector('.texture-grid');
- if(grid){
-  const windowEl=document.createElement('div');windowEl.className='rolling-window';windowEl.setAttribute('role','region');windowEl.setAttribute('aria-label','Explore hair textures');
-  const track=document.createElement('div');track.className='rolling-track';const set=document.createElement('div');set.className='rolling-set';
-  grid.querySelectorAll('.texture-card').forEach(card=>set.append(card.cloneNode(true)));
-  set.querySelectorAll('[data-texture]').forEach(link=>link.addEventListener('click',()=>{const original=grid.querySelector('[data-texture="'+link.dataset.texture+'"]');original?.click()}));
-  const duplicate=set.cloneNode(true);duplicate.setAttribute('aria-hidden','true');duplicate.inert=true;
-  duplicate.querySelectorAll('a').forEach(a=>a.tabIndex=-1);
-  track.append(set,duplicate);windowEl.append(track);grid.after(windowEl);
-  const pause=document.createElement('button');pause.className='carousel-control';pause.type='button';pause.textContent='Pause carousel';pause.setAttribute('aria-pressed','false');windowEl.after(pause);
-  const sync=()=>{pause.hidden=reduced();};sync();matchMedia('(prefers-reduced-motion: reduce)').addEventListener?.('change',sync);
-  pause.addEventListener('click',()=>{const paused=windowEl.classList.toggle('is-paused');pause.textContent=paused?'Play carousel':'Pause carousel';pause.setAttribute('aria-pressed',String(paused))});
-  // Focus reveals the original, interactive set without scrolling it offscreen.
-  windowEl.addEventListener('focusin',()=>{track.style.transform='none';track.style.animation='none'});
-  windowEl.addEventListener('focusout',()=>{requestAnimationFrame(()=>{if(!windowEl.contains(document.activeElement)){track.style.removeProperty('animation');track.style.removeProperty('transform')}})});
- }
+ // One shared controller for fallback photos and owner-published photos/videos.
+ window.NetoCarousel=win=>{
+  win._stopCarousel?.();
+  const set=win.querySelector('.rolling-set');if(!set)return;
+  win.querySelectorAll('[data-carousel-copy]').forEach(node=>node.remove());
+  win.classList.remove('manual-carousel');win.classList.add('media-carousel');
+  const track=document.createElement('div');track.className='media-carousel-track';set.replaceWith(track);track.append(set);
+  let frame=0,last=0,distance=0,position=0,drag=false,visible=true;
+  const originals=[...set.children];
+  const duplicate=()=>{const copy=set.cloneNode(true);copy.dataset.carouselCopy='true';copy.setAttribute('aria-hidden','true');copy.querySelectorAll('button,a,video').forEach(node=>node.tabIndex=-1);copy.querySelectorAll('video').forEach(video=>{video.removeAttribute('autoplay');video.preload='none'});[...copy.children].forEach((card,i)=>card.querySelectorAll('button,a').forEach((node,j)=>node.addEventListener('click',event=>{event.preventDefault();originals[i].querySelectorAll('button,a')[j]?.click()})));track.append(copy)};
+  const measure=()=>{track.querySelectorAll('[data-carousel-copy]').forEach(node=>node.remove());distance=set.getBoundingClientRect().width+(parseFloat(getComputedStyle(track).gap)||0);if(!reduced()&&distance>0){for(let i=0;i<Math.ceil(win.clientWidth/distance)+1;i++)duplicate()}else win.scrollLeft=0};
+  const playing=()=>[...win.querySelectorAll('video')].some(v=>!v.paused&&!v.ended);
+  const run=now=>{if(!win.isConnected)return;const delta=Math.min(now-(last||now),50);last=now;if(!reduced()&&visible&&!document.hidden&&!drag&&!playing()&&distance){position=(position+delta*.025)%distance;win.scrollLeft=position}frame=requestAnimationFrame(run)};
+  win.addEventListener('pointerdown',()=>{drag=true});const release=()=>{position=win.scrollLeft;drag=false};win.addEventListener('pointerup',release);win.addEventListener('pointercancel',release);win.addEventListener('pointerleave',release);win.addEventListener('scroll',()=>{if(drag||playing())position=win.scrollLeft},{passive:true});
+  win.addEventListener('keydown',event=>{if(event.target===win&&['ArrowLeft','ArrowRight'].includes(event.key)){event.preventDefault();position=Math.max(0,win.scrollLeft+(event.key==='ArrowRight'?160:-160));win.scrollLeft=position}});
+  const observer=typeof ResizeObserver==='function'?new ResizeObserver(measure):null;observer?.observe(win);const visibility=typeof IntersectionObserver==='function'?new IntersectionObserver(entries=>visible=entries[0].isIntersecting):null;visibility?.observe(win);const preference=matchMedia('(prefers-reduced-motion: reduce)');preference.addEventListener?.('change',measure);
+  win._stopCarousel=()=>{cancelAnimationFrame(frame);observer?.disconnect();visibility?.disconnect();preference.removeEventListener?.('change',measure)};measure();frame=requestAnimationFrame(run);
+ };
+ // Categories remain a four-item editorial grid; highlights have their own rolling strip.
+ const grid=document.querySelector('.highlight-grid');
+ if(grid){const win=document.createElement('div');win.className='rolling-window';win.tabIndex=0;win.setAttribute('role','region');win.setAttribute('aria-label','Highlighted hair photos and videos');const set=document.createElement('div');set.className='rolling-set';document.querySelectorAll('.texture-grid .texture-card').forEach(card=>{const copy=card.cloneNode(true);if(copy.dataset.texture)copy.href='/shop.html?texture='+copy.dataset.texture;set.append(copy)});win.append(set);grid.append(win);window.NetoCarousel(win)}
+ const categories=document.querySelector('#favourites');if(categories){if(typeof IntersectionObserver==='function'){const reveal=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){categories.classList.add('is-visible');reveal.disconnect()}},{threshold:.15});reveal.observe(categories)}else categories.classList.add('is-visible')}
  const ribbon=document.querySelector('.brand-ribbon');
- if(ribbon){const track=document.createElement('div');track.className='ribbon-track';const set=document.createElement('div');set.className='ribbon-set';while(ribbon.firstChild)set.append(ribbon.firstChild);track.append(set,set.cloneNode(true));ribbon.append(track)}
+ if(ribbon){const track=document.createElement('div');track.className='ribbon-track';const set=document.createElement('div');set.className='ribbon-set';while(ribbon.firstChild)set.append(ribbon.firstChild);const copy=set.cloneNode(true);copy.setAttribute('aria-hidden','true');track.append(set,copy);const viewport=document.createElement('div');viewport.className='ribbon-window';viewport.append(track);ribbon.append(viewport)}
  let pointerFrame=0;
  document.querySelector('#products')?.addEventListener('pointermove',event=>{
   if(reduced()||!fine()||event.pointerType==='touch')return;

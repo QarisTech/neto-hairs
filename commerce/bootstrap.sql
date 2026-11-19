@@ -46,3 +46,5 @@ INSERT OR IGNORE INTO inventory(product_id,option_key) VALUES ('loose-curls','nu
 CREATE TABLE IF NOT EXISTS media_assets(id TEXT PRIMARY KEY,kind TEXT NOT NULL,url TEXT NOT NULL,poster TEXT NOT NULL DEFAULT '',title TEXT NOT NULL,alt TEXT NOT NULL DEFAULT '',origin TEXT NOT NULL,public_id TEXT,provider_version TEXT,bytes INTEGER NOT NULL DEFAULT 0,archived INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS media_uploads(id TEXT PRIMARY KEY,kind TEXT NOT NULL,public_id TEXT NOT NULL,email TEXT NOT NULL,expires_at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS site_pages(id TEXT PRIMARY KEY,draft_json TEXT NOT NULL,published_json TEXT NOT NULL,version INTEGER NOT NULL DEFAULT 0,published_revision INTEGER NOT NULL DEFAULT 0,published_at TEXT);
+
+CREATE TABLE IF NOT EXISTS site_page_backups(id TEXT PRIMARY KEY,home_id TEXT NOT NULL,draft_json TEXT NOT NULL,published_json TEXT NOT NULL,version INTEGER NOT NULL,published_revision INTEGER NOT NULL,published_at TEXT,created_at TEXT NOT NULL);

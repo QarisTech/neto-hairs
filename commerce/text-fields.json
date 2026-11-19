@@ -1,0 +1,713 @@
+[
+  {
+    "group": "Header & navigation",
+    "key": "announcement",
+    "label": "Announcement",
+    "default": "A little luxury. A whole new you.",
+    "selector": ".announcement",
+    "mode": "first",
+    "max": 250
+  },
+  {
+    "group": "Header & navigation",
+    "key": "announcementDetail",
+    "label": "Announcement second phrase",
+    "default": "Discover Neto Hairs",
+    "selector": ".announcement>span",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Header & navigation",
+    "key": "logoFirst",
+    "label": "Logo first line",
+    "default": "NETO",
+    "selector": ".brand:not([data-logo-image])",
+    "mode": "first",
+    "max": 250
+  },
+  {
+    "group": "Header & navigation",
+    "key": "logoSecond",
+    "label": "Logo second line",
+    "default": "HAIRS",
+    "selector": ".brand:not([data-logo-image])>span",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Header & navigation",
+    "key": "locale",
+    "label": "Location and currency label",
+    "default": "Nigeria / NGN \u20a6",
+    "selector": ".locale,.footer-top>span",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Header & navigation",
+    "key": "bagLabel",
+    "label": "Header bag button",
+    "default": "Bag",
+    "selector": ".bag-label",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Header & navigation",
+    "key": "heroMasthead",
+    "label": "Large hero brand lettering",
+    "default": "NETO HAIRS",
+    "selector": ".hero-masthead",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Header & navigation",
+    "key": "navHome",
+    "label": "Home link",
+    "default": "Home",
+    "selector": ".main-nav>a:nth-child(1)",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Header & navigation",
+    "key": "navShop",
+    "label": "Shop link",
+    "default": "Shop all",
+    "selector": ".main-nav>a:nth-child(2)",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Header & navigation",
+    "key": "navWigs",
+    "label": "Wigs link",
+    "default": "Wigs",
+    "selector": ".main-nav>a:nth-child(3)",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Header & navigation",
+    "key": "navStyles",
+    "label": "Styles link",
+    "default": "All styles",
+    "selector": ".main-nav>a:nth-child(4)",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Header & navigation",
+    "key": "navCare",
+    "label": "Care link",
+    "default": "Hair care",
+    "selector": ".main-nav>a:nth-child(5)",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Ribbon & section links",
+    "key": "ribbonFirst",
+    "label": "Scrolling ribbon first phrase",
+    "default": "The Neto Hairs experience",
+    "selector": ".ribbon-set>span:nth-of-type(odd)",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Ribbon & section links",
+    "key": "ribbonSecond",
+    "label": "Scrolling ribbon second phrase",
+    "default": "A look for every version of you",
+    "selector": ".ribbon-set>span:nth-of-type(even)",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Ribbon & section links",
+    "key": "textureLink",
+    "label": "Texture section link",
+    "default": "Meet the collection",
+    "selector": "#favourites .text-link",
+    "mode": "first",
+    "max": 250
+  },
+  {
+    "group": "Ribbon & section links",
+    "key": "careLink",
+    "label": "Care guide link",
+    "default": "Explore the care guide",
+    "selector": ".care-heading .text-link",
+    "mode": "first",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "filterAll",
+    "label": "All hair filter",
+    "default": "All hair",
+    "selector": "[data-filter=\"all\"]",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "filterStraight",
+    "label": "Straight filter",
+    "default": "Straight",
+    "selector": "[data-filter=\"straight\"]",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "filterBob",
+    "label": "Bobs filter",
+    "default": "Bobs",
+    "selector": "[data-filter=\"bob\"]",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "filterWave",
+    "label": "Waves filter",
+    "default": "Waves",
+    "selector": "[data-filter=\"wave\"]",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "filterCurly",
+    "label": "Curls filter",
+    "default": "Curls",
+    "selector": "[data-filter=\"curly\"]",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "sortLabel",
+    "label": "Sort label",
+    "default": "Sort by",
+    "selector": ".sort-label",
+    "mode": "first",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "sortFeatured",
+    "label": "Featured sort option",
+    "default": "Featured",
+    "selector": "#sort option[value=featured]",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "sortLow",
+    "label": "Ascending price sort",
+    "default": "Price: low to high",
+    "selector": "#sort option[value=low]",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "sortHigh",
+    "label": "Descending price sort",
+    "default": "Price: high to low",
+    "selector": "#sort option[value=high]",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "searchLabel",
+    "label": "Search label",
+    "default": "Search hair",
+    "selector": "label[for=collection-search]",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "searchPlaceholder",
+    "label": "Search placeholder",
+    "default": "Try body wave or bob",
+    "selector": "#collection-search",
+    "mode": "placeholder",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "clearSearch",
+    "label": "Clear search button",
+    "default": "Clear",
+    "selector": "#clear-search",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "noResultsTitle",
+    "label": "Empty search heading",
+    "default": "No matches this time.",
+    "selector": "#no-results h3",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "noResultsText",
+    "label": "Empty search explanation",
+    "default": "Try a different texture or clear your filters.",
+    "selector": "#no-results p",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "resetFilters",
+    "label": "Reset filters button",
+    "default": "Show all hair",
+    "selector": "#reset-filters",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "priceOnRequest",
+    "label": "Unconfirmed price label",
+    "default": "Ask for price",
+    "selector": "",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "lengthUnknown",
+    "label": "Unconfirmed length label",
+    "default": "Length to be confirmed",
+    "selector": "",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "asPictured",
+    "label": "Unspecified size button",
+    "default": "As pictured",
+    "selector": "",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "sizeLegend",
+    "label": "Product size prompt",
+    "default": "Choose your size",
+    "selector": ".product-dialog-copy legend",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "colourLabel",
+    "label": "Colour label",
+    "default": "Colour ",
+    "selector": ".chosen-color",
+    "mode": "first",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "addToBag",
+    "label": "Add button",
+    "default": "Add to bag",
+    "selector": "#add",
+    "mode": "first",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "productPriceHelp",
+    "label": "Product price help",
+    "default": "Prices are in naira. Online purchase is available only for confirmed, stocked options.",
+    "selector": ".product-dialog-copy>.sample-description",
+    "mode": "text",
+    "max": 1000
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "productInfoTitle",
+    "label": "Product information heading",
+    "default": "Product information",
+    "selector": ".product-dialog-copy>details>summary",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "productInfo",
+    "label": "Product information text",
+    "default": "Hair type, cap construction, density and stock can be confirmed with Neto Hairs.",
+    "selector": ".product-dialog-copy>details>p",
+    "mode": "text",
+    "max": 1000
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "bagTitle",
+    "label": "Shopping bag heading",
+    "default": "Your bag",
+    "selector": "#bag-title",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "subtotal",
+    "label": "Subtotal label",
+    "default": "Subtotal",
+    "selector": ".bag-total>span",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "bagHelp",
+    "label": "Bag explanation",
+    "default": "Your bag is saved on this device. Final prices and stock are checked before payment.",
+    "selector": "#bag>.sample-description",
+    "mode": "text",
+    "max": 1000
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "continueShopping",
+    "label": "Continue shopping button",
+    "default": "Continue shopping",
+    "selector": "#continue",
+    "mode": "first",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "bagEmpty",
+    "label": "Empty bag message",
+    "default": "Your next favourite is waiting. Explore the collection and make it yours.",
+    "selector": ".bag-empty",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "removeItem",
+    "label": "Remove item button",
+    "default": "Remove",
+    "selector": ".remove-item",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "confirmPricing",
+    "label": "Unconfirmed subtotal",
+    "default": "Confirm pricing",
+    "selector": "",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "addedToBag",
+    "label": "Item added message",
+    "default": "{name} added to your bag.",
+    "selector": "",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "removedFromBag",
+    "label": "Item removed message",
+    "default": "{name} removed from your bag",
+    "selector": "",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "sessionOnly",
+    "label": "Temporary bag storage message",
+    "default": "Saved for this visit only.",
+    "selector": "",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "enquiryAction",
+    "label": "Enquiry button",
+    "default": "Ask about a style",
+    "selector": ".enquiry-action",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "enquiryTitle",
+    "label": "Enquiry heading",
+    "default": "Let\u2019s find your hair.",
+    "selector": "#enquiry-title",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "generalEnquiry",
+    "label": "General enquiry option",
+    "default": "General enquiry",
+    "selector": "#enquiry-form option[value=\"\"]",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "enquirySend",
+    "label": "Send enquiry button",
+    "default": "Send enquiry",
+    "selector": "#enquiry-form button:not([type])",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "checkoutTitle",
+    "label": "Checkout heading",
+    "default": "Your delivery details.",
+    "selector": "#checkout-title",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "checkoutReady",
+    "label": "Available checkout button",
+    "default": "Checkout securely",
+    "selector": ".checkout-launch:not(:disabled)",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "checkoutUnavailable",
+    "label": "Unavailable checkout button",
+    "default": "Checkout opens soon",
+    "selector": ".checkout-launch:disabled",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "checkoutContinue",
+    "label": "Continue to payment button",
+    "default": "Continue to secure payment",
+    "selector": "#checkout-form button:not([type])",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "checkoutHelp",
+    "label": "Bag checkout help",
+    "default": "Prices, stock and delivery are checked before payment. Unpriced styles are available by enquiry.",
+    "selector": "#bag>.checkout-help",
+    "mode": "text",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "enquiryProductid",
+    "label": "Enquiry \u2014 Style",
+    "default": "Style",
+    "selector": "#enquiry-form [name=\"productId\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "enquiryName",
+    "label": "Enquiry \u2014 Your name",
+    "default": "Your name",
+    "selector": "#enquiry-form [name=\"name\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "enquiryEmail",
+    "label": "Enquiry \u2014 Email",
+    "default": "Email",
+    "selector": "#enquiry-form [name=\"email\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "enquiryPhone",
+    "label": "Enquiry \u2014 Phone",
+    "default": "Phone",
+    "selector": "#enquiry-form [name=\"phone\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "enquiryMessage",
+    "label": "Enquiry \u2014 How can we help?",
+    "default": "How can we help?",
+    "selector": "#enquiry-form [name=\"message\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "enquiryConsent",
+    "label": "Enquiry \u2014 I agree to Neto Hairs contacting me about this enquiry.",
+    "default": "I agree to Neto Hairs contacting me about this enquiry.",
+    "selector": "#enquiry-form [name=\"consent\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "checkoutName",
+    "label": "Checkout \u2014 Full name",
+    "default": "Full name",
+    "selector": "#checkout-form [name=\"name\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "checkoutEmail",
+    "label": "Checkout \u2014 Email",
+    "default": "Email",
+    "selector": "#checkout-form [name=\"email\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "checkoutPhone",
+    "label": "Checkout \u2014 Phone",
+    "default": "Phone",
+    "selector": "#checkout-form [name=\"phone\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "checkoutLine",
+    "label": "Checkout \u2014 Street address",
+    "default": "Street address",
+    "selector": "#checkout-form [name=\"line\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "checkoutState",
+    "label": "Checkout \u2014 State",
+    "default": "State",
+    "selector": "#checkout-form [name=\"state\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Enquiry & checkout labels",
+    "key": "checkoutCity",
+    "label": "Checkout \u2014 City",
+    "default": "City",
+    "selector": "#checkout-form [name=\"city\"]",
+    "mode": "label",
+    "max": 250
+  },
+  {
+    "group": "Footer",
+    "key": "copyrightName",
+    "label": "Copyright business name",
+    "default": " Neto Hairs",
+    "selector": ".footer-bottom small",
+    "mode": "last",
+    "max": 250
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "priceFrom",
+    "label": "Starting price prefix",
+    "default": "From",
+    "selector": "",
+    "mode": "text",
+    "max": 60
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "previousPage",
+    "label": "Previous page button",
+    "default": "Previous",
+    "selector": "",
+    "mode": "text",
+    "max": 80
+  },
+  {
+    "group": "Collection, search & filters",
+    "key": "nextPage",
+    "label": "Next page button",
+    "default": "Next",
+    "selector": "",
+    "mode": "text",
+    "max": 80
+  },
+  {
+    "group": "Product details & shopping bag",
+    "key": "clientcamProductLink",
+    "label": "Client Cam product link",
+    "default": "View this hair",
+    "selector": ".clientcam-product-link",
+    "mode": "text",
+    "max": 80
+  },
+  {
+    "key": "seeMore",
+    "group": "Collection",
+    "label": "See more button",
+    "selector": "#see-more",
+    "mode": "text",
+    "default": "See more",
+    "max": 60
+  },
+  {
+    "key": "clientcamEmpty",
+    "group": "Client Cam",
+    "label": "Video coming-soon text",
+    "selector": ".clientcam-empty",
+    "default": "Client videos coming soon.",
+    "mode": "text",
+    "max": 150
+  },
+  {
+    "key": "clientcamShop",
+    "group": "Client Cam",
+    "label": "Collection button",
+    "selector": ".clientcam-shop-link",
+    "default": "Explore the collection",
+    "mode": "text",
+    "max": 80
+  }
+]
